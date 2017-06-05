@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+        <TABLE BORDER=4>
+            <input id="sum">
+
+            <br>
+
+                <button onclick="Mfunction('1')" >1</button>
+                <button onclick="Mfunction('2')" >2</button>
+                <button onclick="Mfunction('3')" >3</button>
+                <button onclick ="print('+')" id="add">+</button>
+                <br>
+                <button onclick="Mfunction('4')">4</button>
+                <button onclick="Mfunction('5')">5</button>
+                <button onclick="Mfunction('6')">6</button>
+                <button onclick="print('-')" >-</button>
+                <br>
+                <button onclick="Mfunction('7')" >7</button>
+                <button onclick="Mfunction('8')" >8</button>
+                <button onclick="Mfunction('9')" >9</button>
+                <button onclick="print('*')" >x</button>
+                <br>
+                <button onclick="Mfunction('c')" >c</button>
+                <button onclick="Mfunction('0')" >0</button>
+                <button onclick="Dfunction('=')" >=</button>
+                <button onclick="print('/')" id="div">/</button>
+
+            </TABLE>
+
+
+            <script>
+                var flag=0;
+                var a = "";var op=""; var b="";
+                function Mfunction(x) {
+                    if (flag === 1) {
+                        a = "";
+                        b = "";
+                        op = "";
+                         flag=0;
+
+                    }
+                    else {
+                        if (op !== "") {
+                            b = b + x;
+                            document.getElementById("sum").value = b;
+                        }
+                        else {
+                            a = a + x;
+                            document.getElementById("sum").value = a;
+                        }
+                    }
+                }
+
+
+                function print(x){
+                    op = x;
+                    document.getElementById("sum").value=op;
+                }
+                function Dfunction(){
+                    if(op==='+')
+                        document.getElementById("sum").value=parseInt(a)+parseInt(b);
+                    else if(op==='-')
+                        document.getElementById("sum").value=parseInt(a)-parseInt(b);
+                    else if(op==='*')
+                        document.getElementById("sum").value=parseInt(a)*parseInt(b);
+                    else if(op==='/')
+                    {
+                        if(parseInt(b)===0)
+                            document.getElementById("sum").value="error" ;
+                        else
+                            document.getElementById("sum").value=parseInt(a)/parseInt(b);
+                    }
+                    flag=1;
+                }
+
+
+
+
+            </script>
+
+</body>
+</html>
